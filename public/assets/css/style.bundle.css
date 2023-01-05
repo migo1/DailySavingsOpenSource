@@ -47018,14 +47018,14 @@ body,
     --kt-app-sidebar-primary-width-actual: 115px;
   }
   [data-kt-app-sidebar-stacked=true] {
-    --kt-app-sidebar-primary-width: 115px;
+    /* --kt-app-sidebar-primary-width: 115px; */
     --kt-app-sidebar-primary-gap-start: 0px;
     --kt-app-sidebar-primary-gap-end: 0px;
     --kt-app-sidebar-primary-gap-top: 0px;
     --kt-app-sidebar-primary-gap-bottom: 0px;
   }
   [data-kt-app-sidebar-primary-minimize=on] {
-    --kt-app-sidebar-primary-width: 75px;
+    /* --kt-app-sidebar-primary-width: 75px; */
     --kt-app-sidebar-primary-gap-start: 0px;
     --kt-app-sidebar-primary-gap-end: 0px;
     --kt-app-sidebar-primary-gap-top: 0px;
@@ -47085,24 +47085,24 @@ body,
     margin-bottom: 0px;
   }
   :root {
-    --kt-app-sidebar-primary-width-actual: 90px;
+    /* --kt-app-sidebar-primary-width-actual: 90px; */
   }
   [data-kt-app-sidebar-stacked=true] {
-    --kt-app-sidebar-primary-width: 90px;
+    /* --kt-app-sidebar-primary-width: 90px; */
     --kt-app-sidebar-primary-gap-start: 0px;
     --kt-app-sidebar-primary-gap-end: 0px;
     --kt-app-sidebar-primary-gap-top: 0px;
     --kt-app-sidebar-primary-gap-bottom: 0px;
   }
   [data-kt-app-sidebar-primary-minimize-mobile=on] {
-    --kt-app-sidebar-primary-width: 75px;
+    /* --kt-app-sidebar-primary-width: 75px; */
     --kt-app-sidebar-primary-gap-start: 0px;
     --kt-app-sidebar-primary-gap-end: 0px;
     --kt-app-sidebar-primary-gap-top: 0px;
     --kt-app-sidebar-primary-gap-bottom: 0px;
   }
   [data-kt-app-sidebar-primary-collapse-mobile=on] {
-    --kt-app-sidebar-primary-width: 0px;
+    /* --kt-app-sidebar-primary-width: 0px; */
   }
   .app-sidebar-primary {
     width: var(--kt-app-sidebar-primary-width);
