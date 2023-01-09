@@ -7979,62 +7979,47 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 "use strict";
 
 // Class definition
-var KTAppSidebar = function () {
-	// Private variables
-	var secondaryWrapper;
-	var secondaryTagsCollapse;
-	var secondaryTagsToggle;
+var KTLayoutHeader = function() {
+    // Private variables
+    var header;
 
-	var handleSecondaryWrapper = function() {
-		var menuActiveItem = secondaryWrapper.querySelector(".menu-link.active");
+    // Private functions
+    var handleSticky = function() {        
+        // Proceed only if header element exists
+        if (!header) {
+            return;
+        }
 
-		if ( !menuActiveItem ) {
-			return;
-		} 
+        var sticky = KTSticky.getInstance(header);
+        var timer;
 
-		if ( KTUtil.isVisibleInContainer(menuActiveItem, secondaryWrapper) === true) {
-			return;
-		}
+        if (!sticky) {
+            return;
+        }
 
-		secondaryWrapper.scroll({
-			top: KTUtil.getRelativeTopPosition(menuActiveItem, secondaryWrapper),
-			behavior: 'smooth'
-		});
-	}
-
-	var handleTagsCollapse = function() {
-		secondaryTagsCollapse.addEventListener('shown.bs.collapse', event => {
-			if ( KTUtil.isVisibleInContainer(secondaryTagsToggle, secondaryWrapper) === true) {
-				return;
-			}
-	
-			secondaryWrapper.scroll({
-				top: KTUtil.getRelativeTopPosition(secondaryTagsToggle, secondaryWrapper),
-				behavior: 'smooth'
-			});
-		})
-	}
-
-	// Public methods
+        sticky.on('kt.sticky.change', function() {
+            timer = setTimeout(function() {
+                KTMenu.updateDropdowns(); 
+            }, 300);              
+        });
+    }
+    
+    // Public methods
 	return {
-		init: function () {
-			// Elements
-			secondaryWrapper = document.querySelector('#kt_app_sidebar_secondary_wrapper');
-			secondaryTagsCollapse = document.querySelector('#kt_app_sidebar_secondary_tags_collapse');
-			secondaryTagsToggle = document.querySelector('[href="#kt_app_sidebar_secondary_tags_collapse"]');
-			
-			if ( secondaryWrapper ) {
-				handleSecondaryWrapper();
-			}
+		init: function() {
+            header = document.querySelector('#kt_header');
 
-			if ( secondaryTagsCollapse ) {
-				handleTagsCollapse();
-			}
+            handleSticky();
 		}
 	};
 }();
 
 // On document ready
-KTUtil.onDOMContentLoaded(function () {
-	KTAppSidebar.init();
+KTUtil.onDOMContentLoaded(function() {
+    KTLayoutHeader.init();
 });
+
+// Webpack support
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports = KTLayoutHeader;
+}
